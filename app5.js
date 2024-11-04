@@ -53,7 +53,7 @@ app.get("/janken", (req, res) => {
     judgement = '負け'; // Lose
   }
   
-  total += 1; // プレイしたゲームの合計を増やす
+  total += 1; 
   const display = {
     your: hand,
     cpu: cpu,
