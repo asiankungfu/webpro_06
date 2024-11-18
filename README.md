@@ -249,7 +249,7 @@ if -->f
 f --> game
 game --> end1
 ```
-## 計算のフローチャート
+##　　計算のフローチャート
 ```mermaid
 flowchart TD;
 
@@ -265,7 +265,7 @@ a -->b
 b-->game
 game --> end1
 ```
-##　年齢のフローチャート
+##　　年齢のフローチャート
 ```mermaid
 flowchart TD;
 
