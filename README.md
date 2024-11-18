@@ -92,7 +92,7 @@ app.get("/janken", (req, res) => {
   res.render('janken', display);
 });
 ```
-##　年齢チェック
+## 年齢
 
 ```javascript
 app.get("/age", (req, res) => {
