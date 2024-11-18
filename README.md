@@ -247,6 +247,7 @@ if -->e
 e --> game
 if -->f
 f --> game
+game --> if
 game --> end1
 ```
 ## 計算のフローチャート
