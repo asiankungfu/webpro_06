@@ -1,0 +1,18 @@
+<!-- views/age.ejs -->
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>年齢入力</title>
+</head>
+<body>
+  <h1>年齢を入力してください</h1>
+  <form action="/age" method="post">
+    <label for="age">年齢:</label>
+    <input type="text" id="age" name="age" required>
+    <button type="submit">送信</button>
+  </form>
+  <a href="/">トップページに戻る</a>
+</body>
+</html>

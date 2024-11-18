@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>運勢占い</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            padding: 20px;
+        }
+        input {
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>数字で運勢を占おう！</h1>
+    <p>1〜100の数字を入力して、運勢を見てみよう！</p>
+
+    <!-- formを使わず、ボタンのクリックでイベント発火 -->
+    <input type="text" id="userNumber" placeholder="1〜100の数字を入力" maxlength="3">
+    <button id="checkButton">運勢を占う</button>
+
+    <div id="result" class="result"></div>
+
+    <script>
+        document.getElementById("checkButton").addEventListener("click", function() {
+            // ユーザーが入力した数字を取得
+            const userNumber = document.getElementById("userNumber").value;
+            const resultDiv = document.getElementById("result");
+
+            // 数字が入力されていない場合はエラーメッセージ
+            if (userNumber === "") {
+                resultDiv.innerHTML = "数字を入力してください！";
+                return;
+            }
+
+            // 数字が1〜100の範囲内か確認
+            const num = parseInt(userNumber);
+            if (isNaN(num) || num < 1 || num > 100) {
+                resultDiv.innerHTML = "1〜100の数字を入力してください！";
+                return;
+            }
+
+            // 数字に基づいて運勢を決める
+            let fortune = "";
+            const randomSeed = num % 10;  // 数字の一部を運勢の決定に使う
+
+            switch (randomSeed) {
+                case 0:
+                    fortune = "大吉！全てうまくいくでしょう！";
+                    break;
+                case 1:
+                case 2:
+                    fortune = "吉！少しの努力で良い結果が得られます。";
+                    break;
+                case 3:
+                case 4:
+                    fortune = "中吉！着実に進むことで幸運が訪れます。";
+                    break;
+                case 5:
+                case 6:
+                    fortune = "小吉！思わぬところにチャンスが隠れています。";
+                    break;
+                case 7:
+                case 8:
+                    fortune = "末吉！運は少しずつ開けていきます。";
+                    break;
+                case 9:
+                    fortune = "凶…慎重に行動することをおすすめします。";
+                    break;
+                default:
+                    fortune = "運勢の結果が読み取れませんでした。";
+            }
+
+            // 結果を表示
+            resultDiv.innerHTML = `あなたの運勢は：${fortune}`;
+        });
+    </script>
+
+</body>
+</html>
