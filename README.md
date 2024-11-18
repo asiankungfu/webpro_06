@@ -16,7 +16,7 @@ add5.js | プログラム本体
   /calculator.ejs     | 計算機能ページ
   /result.ejs         | 計算結果や年齢結果の表示ページ
 /package.json         | Node.js の依存関係
-## 1. プロジェクトの概要
+##  プロジェクトの概要
 
 このアプリケーションは,Express フレームワークを使用して開発され,以下の機能を提供する.
 - **じゃんけんゲーム** (`/janken`)
@@ -24,10 +24,10 @@ add5.js | プログラム本体
 - **計算機能** (`/calculator`)
 - **占い機能** (`/henken`)
 
-## 2. 起動方法
+##  起動方法
 1. ターミナルで```add5.js``` を起動する
 2. Webブラウザで[localhost:8080](http://localhost:8080)にアクセスする
-## 3.使用方法
+## 使用方法
 ファイル名|起動後
 -|-
 ジャンケン|自分の手を入力
@@ -35,7 +35,7 @@ add5.js | プログラム本体
 計算機能|任意の二つの数を入力
 占い|好みの数字を入力
 
-## 3. Git でのファイル管理
+## Git でのファイル管理
 
 **リポジトリをクローン**:
 
@@ -44,7 +44,7 @@ add5.js | プログラム本体
    ```bash
    git clone https://github.com/your-username/repository-name.
 ```
-### 変更のコミットとプッシュ
+## 変更のコミットとプッシュ
 ソースコードに変更を加えた後,変更を Git にコミットする.例えば,新しい機能を追加した場合やバグ修正を行った場合
 ```bash
 git add .
@@ -52,8 +52,8 @@ git commit -m "追加/修正内容を簡潔に説明"
 git push
 ```
 
-##　実装内容
-###　ジャンケン
+# 実装内容
+## 　ジャンケン
 ```javascript
 app.get("/janken", (req, res) => {
   let hand = req.query.hand;
@@ -92,7 +92,7 @@ app.get("/janken", (req, res) => {
   res.render('janken', display);
 });
 ```
-###　年齢チェック
+##　年齢チェック
 
 ```javascript
 app.get("/age", (req, res) => {
@@ -114,7 +114,7 @@ app.post("/age", (req, res) => {
   res.render('result', { message: message });
 });
 ```
-### 計算機能
+## 計算機能
 ```javascript
 app.get("/calculator", (req, res) => {
   res.render('calculator');
@@ -135,7 +135,7 @@ app.get("/", (req, res) => {
   res.render('index');
 });
 ```
-###　占い
+## 占い
 ```javascript
 app.post("/henken-result", (req, res) => {
   const userNumber = req.body.userNumber;  // ユーザーが入力した数字を取得
