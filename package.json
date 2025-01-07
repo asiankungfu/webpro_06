@@ -4,7 +4,7 @@
   "description": "Node.js example server starter project",
   "main": "src/index.js",
   "scripts": {
-    "start": "node app4.js"
+    "start": "node app9.js"
   },
   "dependencies": {
     "dot-prop": ">=5.1.1",

@@ -288,32 +288,19 @@ flowchart TD;
 
 start["開始"];
 end1["終了"]
-
 a["文字がAか?"]
 b["文字がBか?"]
-game["不明な文字と表示"]
 c["Aのパターンを設定する"]
 d["Bのパターンを設定する"]
-start --> a
-a -->|いいえ|game
-a -->|はい|c
+e["不明な文字と表示"]
+
+start -->a
+start-->b
+a -->|はい| c
+b --> |はい|d
+a-->|いいえ| e
+b -->|いいえ| e
+e--> end1
 c-->end1
-start --> b
-b-->|いいえ|game
-b -->|はい|d
-d --> end1
-```
-```mermaid
-flowchart TD;
-
-start["開始"];
-end1["終了"]
-
-a["文字のパターンを生成"]
-c["HEIGHT(8)の行にわたってループ
-各行を逆順(上下逆転,左右逆転)で表示"]
-
-start --> a
-a -->c
-c --> end1
+d-->end1
 ```

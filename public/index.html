@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
+  <link rel="stylesheet" href="/public/styles.css">  <!-- 必要ならスタイルシートを適用 -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+  <h1>To-Do List</h1>
+  
+  <!-- To-Doの追加フォーム -->
+  <form id="todo-form">
+    <input type="text" id="task" placeholder="タスクを入力" required>
+    <input type="date" id="dueDate" required>
+    <button type="submit">追加</button>
+  </form>
+
+  <!-- To-Doリストの表示 -->
+  <ul id="todo-list"></ul>
+
+  <script>
+    $(document).ready(function() {
+      // タスクをサーバーから読み込む
+      function loadTasks() {
+        $.get("/read", { start: 0 }, function(data) {
+          const tasks = data.tasks;
+          $('#todo-list').empty();
+          tasks.forEach(task => {
+            $('#todo-list').append(`
+              <li>${task.task} - 期限: ${task.dueDate}</li>
+            `);
+          });
+        });
+      }
+
+      // フォームが送信された時の処理
+      $('#todo-form').submit(function(event) {
+        event.preventDefault();
+
+        const task = $('#task').val();
+        const dueDate = $('#dueDate').val();
+
+        $.post("/post", { task: task, dueDate: dueDate }, function() {
+          loadTasks();  // タスクを再読み込み
+          $('#task').val('');  // フォームのクリア
+          $('#dueDate').val('');
+        });
+      });
+
+      // 初期タスクの読み込み
+      loadTasks();
+    });
+  </script>
+</body>
+</html>
