@@ -7,6 +7,7 @@ let bbs = [];  // 本来はDBMSを使用するが，今回はこの変数にデ�
 app.set('view engine', 'ejs');
 app.use("/public", express.static(__dirname + "/public"));
 app.use(express.urlencoded({ extended: true }));
+app.use(express.json());
 
 app.get("/hello1", (req, res) => {
   const message1 = "Hello world";
